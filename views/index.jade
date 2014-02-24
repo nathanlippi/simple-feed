@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  div#feed
+  script.
+    var socket = io.connect(!{socket_address});
+    socket.on("event", function (event_json) {
+      $("#feed").prepend("<div class='item'><b>"+event_json.type+"</b>: "+event_json.msg+"</div>");
+    });
