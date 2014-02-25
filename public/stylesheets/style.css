@@ -7,18 +7,15 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-a {
-  color: #00b7ff;
-}
 div#feed {
-  background: #ff0;
+  background: #ebfaff;
   width: 60%;
   min-height: 80%;
   margin: 0 auto;
 }
 div#feed .item {
   width: 98%;
-  background: #0d0;
+  background: #3cf;
   display: block;
   margin: 5px auto;
 }
