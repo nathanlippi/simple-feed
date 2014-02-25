@@ -10,7 +10,13 @@ block content
     var audio  = new Audio('sounds/alert.mp3');
 
     socket.on("event", function (event_json) {
-      $("#feed").prepend("<div class='item'><b>"+event_json.type+"</b>: "+event_json.msg+"</div>");
+      var str = "";
+      $.each(event_json, function(index, value) {
+          str += "<b>"+index+"</b>: "+value+" &nbsp;";
+      });
+      str = "<div class='item'>"+str+"</div>";
+
+      $("#feed").prepend(str);
 
       if($("#is_sound_on").is(':checked')) {
           audio.play();
