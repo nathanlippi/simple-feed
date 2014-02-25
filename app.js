@@ -26,27 +26,24 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
 
 var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
+});
+
+app.post('/event', function(req, res) {
+  var event_json = req.body;
+
+  emit_event(event_json);
+
+  res.send(1);
 });
 
 var io = require("socket.io").listen(server);
 
 io.sockets.on("connection", function(socket)
 {
-  // socket.emit("config", {split_n_minutes: config.split_n_minutes});
 
-  // update_all(socket);
-});
-
-app.post('/event', function(req, res) {
-  var event_json = req.body.event;
-
-  emit_event(event_json);
-
-  res.send(1);
 });
 
 function emit_event(event_json) {
