@@ -39,7 +39,7 @@ app.post('/event', function(req, res) {
   res.send(1);
 });
 
-var io = require("socket.io").listen(server);
+var io = require("socket.io").listen(server, {log: false});
 
 io.sockets.on("connection", function(socket)
 {
